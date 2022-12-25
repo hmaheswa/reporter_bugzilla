@@ -1,0 +1,6 @@
+python-bugzilla
+gspread
+oauth2client
+pyyaml
+jinja_markdown
+pytz
