@@ -485,6 +485,7 @@ def get_dev_backlog(version):
         ],
 
     }
+    query["limit"] = 1000
     bugs = bzapi.query(query)
     bugs = filter_by_status(bugs, OPEN_BUGS_LIST)
     return bugs
@@ -563,6 +564,7 @@ def get_untriaged_bugs(version_flag):
 
 
     }
+    query["limit"] = 1000
     bugs = bzapi.query(query)
     bugs = filter_by_status(bugs, [
         "NEW", "ASSIGNED", "POST", "MODIFIED", "ON_DEV", "ON_QA",
