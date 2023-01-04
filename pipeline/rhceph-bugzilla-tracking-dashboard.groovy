@@ -52,11 +52,6 @@ stage("executeWorkflow") {
     sh (script: ".venv/bin/python3 -m pip install --upgrade pip")
     sh (script: ".venv/bin/python3 -m pip install -r requirements.txt")
 
-    sh (script : "sudo yum install postfix -y")
-    sh (script : "sudo systemctl enable postfix")
-    sh (script : "sudo systemctl start postfix")
-    sh (script : "sudo systemctl status postfix")
-
     println "Adding API files"
     sh (script : "mkdir -p ${dest_bugzilla_api_path}")
     sh (script : "cp ${bugzilla_api_file} ${dest_bugzilla_api_path}")
@@ -64,7 +59,7 @@ stage("executeWorkflow") {
     sh (script : "mkdir -p ${dest_google_api_path}")
     sh (script : "cp ${google_api_file} ${dest_google_api_path}")
 
-    println "Generating Action items"
+    println "executing rhceph 6.1 dashboard report"
     sh (script: '.venv/bin/python3 tracking_dashboard.py "RHCS 6.1 QE - Quality Dashboard"')
     
     }
