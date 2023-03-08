@@ -19,7 +19,7 @@ BASE_QUERY = {
     "j3": "OR",
     "o8": "anywordssubstr",
     "query_format": "advanced",
-    "classification": "Red Hat",
+    "classification": ["Red Hat", "Red Hat Storage"],
     "product": BUGZILLA_PRODUCT,
     "target_release": TARGET_RELEASE,
     "v8": ""
@@ -295,7 +295,7 @@ def get_needinfos_bugs():
     all_team_members = ",".join(all_team_members)
     query = {
         "bug_status" : "",
-        "classification" : "Red Hat",
+        "classification" : ["Red Hat", "Red Hat Storage"],
         "f1" : "requestees.login_name",
         "f2" : "flagtypes.name",
         "include_fields" : [
@@ -363,7 +363,7 @@ def get_new_arrivals(version=VERSION, changed_from='-1w', changed_to="Now"):
         "o7": "notsubstring",
         "query_format": "advanced",
         "target_milestone": "---",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "v7": "Documentation",
         "version": version
@@ -384,7 +384,7 @@ def get_blocker_arrivals(version=VERSION, changed_from='-1w', changed_to="Now"):
         "j3": "OR",
         "o7": "substring",
         "query_format" : "advanced",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "v7": "blocker",
         "f8": "component",
@@ -405,7 +405,7 @@ def get_resolved_bugs(
         "chfieldfrom": changed_from,
         "chfieldto": changed_to,
         "chfieldvalue": "ON_QA",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "f3": "OP",
         "f6": "CP",
         "f7": "component",
@@ -466,7 +466,7 @@ def get_dev_backlog(version):
     query = {
         "bug_status": "NEW,ASSIGNED,POST,MODIFIED,ON_DEV",
         "query_format": "advanced",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "target_release": TARGET_RELEASE,
         "f1": "component",
@@ -501,7 +501,7 @@ def get_critical_bugs(version=VERSION):
         "j3": "OR",
         "keywords": "FutureFeature, Improvement, ",
         "keywords_type": "nowords",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "target_release" : TARGET_RELEASE,
         "include_fields": [
@@ -525,7 +525,7 @@ def get_regression_bugs(version=VERSION):
         "j3": "OR",
         "o7": "anywordssubstr",
         "query_format": "advanced",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "v7": "Regression",
         "version": version,
@@ -552,7 +552,7 @@ def get_untriaged_bugs(version_flag):
         "o7": "regexp",
         "o8": "substring",
         "query_format": "advanced",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "target_release" : TARGET_RELEASE,
         "v7": f'{version_flag}.*[?]',
@@ -584,7 +584,7 @@ def get_doc_bugs():
         "o7": "equals",
         "o9": "notsubstring",
         "query_format": "advanced",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "target_release" : TARGET_RELEASE,
         "v7": "Documentation",
@@ -602,7 +602,7 @@ def get_doc_bugs():
 def get_performance_blockers():
     query = {
         "bug_status": "NEW,ASSIGNED,POST,MODIFIED",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "f3": "OP",
         "f6": "CP",
         "j5": "OR",
@@ -620,7 +620,7 @@ def get_performance_blockers():
 def get_scale_blockers():
     query = {
         "bug_status": "NEW,ASSIGNED,POST,MODIFIED",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "product": BUGZILLA_PRODUCT,
         "target_release" : TARGET_RELEASE,
         "f3": "OP",
@@ -661,7 +661,7 @@ def get_overall_backlog(version=''):
 def get_all_bugs_in_version(version=''):
     query = {
         "action": "wrap",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "bug_status": "__open__,__closed__",
         "f3": "OP",
         "f6": "CP",
@@ -687,7 +687,7 @@ def get_all_bugs_in_version(version=''):
 def get_all_bugs_targeted_to_version(version=BUGZILLA_VERSION_FLAG):
     query = {
         "action": "wrap",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "bug_status": "__open__,__closed__",
         "f3": "OP",
         "f6": "CP",
@@ -796,7 +796,7 @@ def get_verified_bugs(
         "chfieldfrom": changed_from,
         "chfieldto": changed_to,
         "chfieldvalue": "VERIFIED",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "f3": "OP",
         "f6": "CP",
         "j3": "OR",
@@ -815,7 +815,7 @@ def get_verified_bugs(
 def get_changed_bugs_in_the_past_x_time(time='-1h'):
     query = {
         "bug_status": "NEW,ASSIGNED,POST,MODIFIED,ON_DEV,VERIFIED,ON_QA,RELEASE_PENDING",
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "f3": "OP",
         "f6": "CP",
         "f9": "delta_ts",
@@ -998,7 +998,7 @@ def get_testing_blockers(version=BUGZILLA_VERSION_FLAG):
 def get_gss_closed_loop(flag, status=""):
     query = {
         "bug_status": status,
-        "classification": "Red Hat",
+        "classification": ["Red Hat", "Red Hat Storage"],
         "f3": "flagtypes.name",
         "include_fields": [
             "id",
